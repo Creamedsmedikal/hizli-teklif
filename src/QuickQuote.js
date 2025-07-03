@@ -1,20 +1,21 @@
+
 import { useState, useEffect, useRef } from "react";
 import html2pdf from "html2pdf.js";
 
 const productList = [
-  { name: "Revypeel Low", price: 72, costRate: 0.7 },
-  { name: "Revypeel High", price: 84, costRate: 0.7 },
-  { name: "Prepeeling Solüsyon", price: 11, costRate: 0.7 },
-  { name: "Nötralize Edici Jel", price: 11, costRate: 0.7 },
-  { name: "Post Peeling Krem", price: 16, costRate: 0.7 },
-  { name: "Revypeel Low Set", price: 205, costRate: 0.7 },
-  { name: "Revypeel High Set", price: 235, costRate: 0.7 },
-  { name: "Cryopen O+", price: 1500, costRate: 0.2 },
-  { name: "Cryopen XP", price: 2400, costRate: 0.2 },
-  { name: "16gr N2O Kartuş", price: 3.5, costRate: 0.2 },
-  { name: "Dermalab Aesthetics", price: 9000, costRate: 0.2 },
-  { name: "Dermalab Combo", price: 16000, costRate: 0.2 },
-  { name: "DSM Colorimetre 4", price: 2000, costRate: 0.2 },
+  { name: "Revypeel Low", price: 285, costRate: 0.7 },
+  { name: "Revypeel High", price: 330, costRate: 0.7 },
+  { name: "Prepeeling Solüsyon", price: 50, costRate: 0.7 },
+  { name: "Nötralize Edici Jel", price: 50, costRate: 0.7 },
+  { name: "Post Peeling Krem", price: 60, costRate: 0.7 },
+  { name: "Revypeel Low Set", price: 405, costRate: 0.7 },
+  { name: "Revypeel High Set", price: 450, costRate: 0.7 },
+  { name: "Cryopen O+", price: 3200, costRate: 0.2 },
+  { name: "Cryopen XP", price: 4950, costRate: 0.2 },
+  { name: "16gr N2O Kartuş", price: 150, costRate: 0.2 },
+  { name: "Dermalab Aesthetics", price: 19500, costRate: 0.2 },
+  { name: "Dermalab Combo", price: 38000, costRate: 0.2 },
+  { name: "DSM Colorimetre 4", price: 4600, costRate: 0.2 },
 ];
 
 export default function QuickQuote() {
@@ -64,6 +65,9 @@ export default function QuickQuote() {
 
   return (
     <div className="p-6 max-w-xl mx-auto bg-white rounded-2xl shadow-md space-y-4">
+      <div className="flex justify-center">
+        <img src='/creameds-logo.png' alt='Creameds Medikal Logo' className='h-20 mb-4' />
+      </div>
       <h2 className="text-xl font-bold">Hızlı Fiyat Teklifi</h2>
 
       <input
@@ -139,11 +143,13 @@ export default function QuickQuote() {
       />
 
       <div ref={quoteRef} className="text-sm text-gray-700 space-y-2">
+        <div className="flex justify-center mb-2">
+          <img src='/creameds-logo.png' alt='Creameds Logo' className='h-16' />
+        </div>
         <h3 className="font-semibold text-base">{customerName && `Müşteri: ${customerName}`}</h3>
         <ul className="divide-y">
           {items.map((item, index) => {
             const subtotal = item.price * item.quantity;
-            const importCost = subtotal * item.costRate;
             const withMargin = subtotal * (1 + profitMargin / 100);
             const withVAT = withMargin * (1 + vat / 100);
             return (
@@ -151,7 +157,6 @@ export default function QuickQuote() {
                 <p>Ürün: {item.name}</p>
                 <p>Adet: {item.quantity}</p>
                 <p>Ara Toplam: €{subtotal.toFixed(2)}</p>
-                <p>İthalat Maliyeti: €{importCost.toFixed(2)}</p>
                 <p>Kar Marjlı: €{withMargin.toFixed(2)}</p>
                 <p>KDV Dahil (€): €{withVAT.toFixed(2)}</p>
               </li>
