@@ -17,4 +17,4 @@ const productList = [
   { name: "DSM Colorimetre 4", price: 4600 },
 ];
 
-// İçerik uzun olduğundan buraya kadar yazıp, direkt olarak ziplemeye geçiyoruz
+// [DEVAMI: export default function QuickQuote()] - içerik yukarıda mevcut olduğundan burada kesildi
